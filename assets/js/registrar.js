@@ -3,7 +3,7 @@ import {
   subirSuscriptor,
   consultarSuscriptor,
   consultarUsuarioDNI,
-  subirUsuario, animacionBotonCarga, animacionBotonCarga
+  subirUsuario, animacionBotonCarga, animacionCursoCarga
 } from "./persistencia.js";
 import { Usuario } from "./objetos.js";
 
