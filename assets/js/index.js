@@ -14,7 +14,7 @@ document.getElementById("index-input-busqueda").addEventListener("keydown",funct
 })
 
 async function consultarPuntos(filtro) {
-    console.log("Se ingreso a la consultarPuntos");
+    // console.log("Se ingreso a la consultarPuntos");
     animacionBotonCarga("index-buscar-puntos",true)
     try {
       const listaPuntos = await bajarPuntos(filtro);

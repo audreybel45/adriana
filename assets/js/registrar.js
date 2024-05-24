@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // si la foto no carga o no se eligue foto se usa la predeterminada
   document.getElementById("registrar-foto-perfil").addEventListener("change", (e) => {
     const elementoImagen = document.getElementById("registrar-foto-actual");
+    miMensaje("paraaaaaa ansioooosooo  ya estas suscripto!!! -- Gracias por elegirnos", "Ese DNI ya Existe",3);
     if (e.target.files[0]) {
       // si existe algun archivo regresa true
       const lector = new FileReader();
@@ -23,37 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
       elementoImagen.src = "https://i.ibb.co/8MPLpzp/imagen.jpg";
     }
   });
-
-//   /**
-//    * Agrega en el Button una animacion de cargar
-//    * 
-//    * @param {string} nombreElemento id del elemento button que tendra la animacion
-//    * @param {boolean} accion - Indica si debe acticar (true) o desactivar (false) la animacion.
-//    */
-//   function animacionBotonCarga(nombreElemento,accion){
-//     const elemento = document.getElementById(nombreElemento)
-//     if (accion){
-//       elemento.classList.add("loading-button")
-//     }else{
-//       elemento.classList.remove("loading-button")
-//     }
-//   }
-
-//   /**
-//  * Cambia el cursor a 'wait' cuando se activa la animación de carga en un elemento.
-//  * 
-//  * @param {string} nombreElemento - El ID del elemento cuyo cursor cambiará.
-//  * @param {boolean} accion - Indica si se debe activar (true) o desactivar (false) la animación.
-//  */
-//   function animacionCursoCarga(nombreElemento,accion){
-//     const elemento = document.getElementById(nombreElemento)
-//     if (accion){
-//       elemento.classList.add("loading-cursor")
-//     }else{
-//       elemento.classList.remove("loading-cursor")
-//     }
-//   }
-
 
   document.getElementById("registrar-boton-cargar").addEventListener("click", cargarRegistro);
 
@@ -139,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // COMPROBAR QUE EL CORREO NO EXISTE
       let existe = await consultarSuscriptor(correo);
       if (existe) {
-        alert("paraaaaaa ansioooosooo  ya estas suscripto!!! -- Gracias por elegirnos");
+        miMensaje("Ese DNI ya Existe","paraaaaaa ansioooosooo  ya estas suscripto!!! -- Gracias por elegirnos",3);
       } else {
         // CARGAMOS EL CORREO AL ENDPOINT
         let respuesta = subirSuscriptor(correo);
@@ -153,4 +123,31 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("footer-text-subscribir").select();
     }
   }
+
+  function miMensaje(msg, tit, tiempo) {
+    // Creamos los elementos
+    const contenedor = document.createElement("div");
+    contenedor.classList.add("contenedor-miMensage");
+    const titulo = document.createElement("h3");
+    titulo.textContent = tit;
+    const mensaje = document.createElement("p");
+    mensaje.textContent = msg;
+    
+    // Insertamos los elementos al contenedor
+    contenedor.appendChild(titulo);
+    contenedor.appendChild(mensaje);
+    
+    // Seleccionamos el destino de la página (será el body) y agregamos el mensaje
+    const hoja = document.querySelector("body");
+    hoja.appendChild(contenedor);
+    
+    // Eliminamos el mensaje después de `tiempo` segundos
+    setTimeout(() => {
+        hoja.removeChild(contenedor);
+    }, tiempo * 1000);
+}
+
+
+
+
 }); // FIN DEL DOMContentLoaded

@@ -1,9 +1,6 @@
 //Clase punto que se usa en el INDEX para cada una de las consultas del 
 // es necesario modificarla para que regrese la Estructura HTML a insertar y que el que llamo la inserte en dode quiera
 
-
-
-
 export class Punto {
   constructor(id, nombre, provincia, pais, descripcion, fotourl, miniaturaurl, hospedajes, transporte, formas_llegar) {
     this.id = id
@@ -41,7 +38,7 @@ export class Punto {
 
     const elementoImagen = document.createElement("img");
     elementoImagen.src = this.miniaturaurl;
-    console.log("ruta a la miniatura", this.miniaturaurl)
+    // console.log("ruta a la miniatura", this.miniaturaurl)
     
     // agregamos al div los elemento
     contenedorPunto.appendChild(elementoImagen);

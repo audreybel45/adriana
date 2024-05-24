@@ -56,3 +56,39 @@
     align-items: center;
 }
 
+.input-formulario label {
+    font-size: 16px;
+    margin-right: 5px;
+}
+.input-formulario input {
+    font-size: 16px;
+    width: 100%;
+    height: 20px;
+    border-radius: 5px;
+    padding: 0.4rem 0 0.4rem 0; 
+    text-align: center;
+    
+}
+
+.formulario-boton-acciones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.formulario-terminos-condiciones{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    padding: 1rem;
+}
+
+.botones-formularios{
+    width: 40%;
+    margin-bottom: 1rem;
+}
+
+.formulario-boton-acciones a{
+    margin: 1rem
+}

@@ -1,0 +1,25 @@
+.pagina-enconstruccion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("../images/enconstruccion.jpg") no-repeat;
+    background-position: center;
+    /*
+    background-size: cover;
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    */
+
+}
+.encontruccion-texto {
+    margin: auto;
+    text-align: center;
+    -webkit-text-stroke: 0.5px black; 
+    color: white; 
+}
+
+.encontruccion-texto a:hover {
+    color: red;
+}
