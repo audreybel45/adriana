@@ -1,8 +1,20 @@
 /* Estilos para pantallas grandes (mayores a 992px) */
+
+:root{
+  --header-heigth: 70px;
+}
+
+
+
 @media only screen and (min-width: 992px) {
+  .header-icono-hamburguesa {
+    display: none;
+  }
+
   header {
     background-color: var(--color-azul-marino);
     display: flex;
+    height: var(--header-heigth);
   }
 
   .contenedor-imagen-header {
@@ -30,9 +42,14 @@
 
 /* Estilos para tabletas (entre 768px y 991px) */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .header-icono-hamburguesa {
+    display: none;
+  }
+
   header {
     background-color: var(--color-azul-marino);
     display: flex;
+    height: var(--header-heigth);
   }
   .contenedor-imagen-header {
     height: 60px;
@@ -60,12 +77,15 @@
 
 /* Estilos para celulares (menores a 767px) */
 @media only screen and (max-width: 767px) {
-  .contenedor-imagen-header {
-    display: none;
+  .contenedor-imagen-header img{
+    height: var(--header-heigth);
   }
   header {
     background-color: var(--color-azul-marino);
     display: flex;
+    height: var(--header-heigth);
+    justify-content: space-around;
+    align-items: center;
   }
 
   .contenedor-link-header {
@@ -73,13 +93,49 @@
   }
 
   .contenedor-link-header ul {
+    background-color: var(--color-azul-marino);
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     list-style-type: none;
+    
     a {
       text-decoration: none;
       color: black;
-      font-size: var(--tamano-fuente-16);
+      font-size: var(--tamano-fuente-24);
     }
   }
+  .contenedor-link-header ul li{
+    margin: 2rem;
+    padding: 15px 0 15px 0;
+    text-align: center;
+  }
+
+  
+
+  .contenedor-link-header{
+    height: 0;
+    /* height: calc(100vh - var(--header-heigth)); */
+    position: absolute;
+    top: 50px;
+    overflow: hidden;
+    transition: all .3s;
+
+  }
+  #header-menu-hamburguesa:checked + .contenedor-link-header{
+    /* height: calc(100vh - var(--header-heigth)); */
+    height: 150vh;
+    
+  }
+
+} /*  Fin Configuracion del header para celular  */
+
+
+.header-icono-hamburguesa img{
+  width: 3rem;
+
+}
+
+#header-menu-hamburguesa{
+  display: none;
 }

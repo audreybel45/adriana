@@ -138,6 +138,11 @@
  
   /* Estilos para celulares (menores a 767px) */
   @media only screen and (max-width: 767px) {
+
+    footer {
+        background-color: var(--color-marron-grisaceo);
+    }
+
     .footer-primer-contenedor {
         display: flex;
         flex-direction: column;
@@ -168,6 +173,9 @@
         text-align: center;
         margin: 15px
 
+    }
+    .footer-redes-sociales li{
+        margin-bottom: 10px;
     }
 
   } /**  Fin pantalla celular   **/
@@ -219,4 +227,5 @@ footer li{
 
 .footer-contacto li {
     margin-top: 15px;
+
 }
