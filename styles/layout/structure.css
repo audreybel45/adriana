@@ -1,10 +1,43 @@
-.botones {
+/* PROCESOS PARA LA ANIMACION DE SE ESTA CARGANDO */
+
+.loading-button {
+    cursor: wait;
+  }
+  
+  .loading-button::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Estilo para el cursor de espera */
+  .loading-cursor {
+    cursor: wait;
+  }
+
+
+.botones-formularios {
     padding: 10px 20px;
     margin-right: 10px;
     border: none;
     border-radius: 5px;
-    background-color: var(--color-amarillo-oro);
-    color: white;
+    background-color: var(--color-azul-marino);
+    color: black;
     font-size: var(--fn-tamaño-gigante);
     cursor: pointer;
+    font-size: 20px;
 }
+
+

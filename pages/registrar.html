@@ -8,60 +8,105 @@
     <title>Alta de Usuario Nuevo</title>
   </head>
   <body>
+    <header>
+      <div class="contenedor-imagen-header">
+        <img
+          src="../assets/images/cerrode7colores.jpg"
+          alt="Logo de la Pagina"
+        />
+      </div>
+      <div class="contenedor-link-header">
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="./turismo.html">Cuentanos!</a></li>
+          <li><a href="./guias.html">Guias</a></li>
+          <li><a href="./acceder.html">Acceder</a></li>
+          <li><a href="./registrar.html">Registrar</a></li>
+        </ul>
+      </div>
+    </header>
     <main>
-      <div class="registrar-contenedor-buscador">
-        <!-- <a href="https://ibb.co/8MPLpzp"><img src="https://i.ibb.co/8MPLpzp/imagen.jpg" alt="imagen" border="0"></a> -->
-
-        <h2>Registro de Usuario</h2>
-        <form
-          class="registro-formulario"
-          id="formulario-de-registro"
-          enctype="multipart/form-data"
-        >
-          <div>
-            <label for="registro-foto-perfil">Foto de Perfil:</label>
-            <input
-              type="file"
-              id="registro-foto-perfil"
-              name="photo"
-            />
-            <img
-              id="registro-foto-actual"
-              src="https://i.ibb.co/8MPLpzp/imagen.jpg"
-              alt="Preview de la imagen"
-              style="max-width: 200px; margin-top: 10px"
-            />
+      <div class="registrar-contenedor-furmulario">
+        <form class="registro-formulario" id="formulario-de-registro" enctype="multipart/form-data">
+          <h2>Registro de Usuario</h2>
+          <div class="registrar-foto-perfil">
+            <img id="registrar-foto-actual" src="https://i.ibb.co/8MPLpzp/imagen.jpg" alt="Preview de la imagen"/>
+            <label class="input-formulario-file-label" for="registrar-foto-perfil">Cambiar Foto</label>
+            <input class="input-formulario-file" type="file" id="registrar-foto-perfil" name="photo"/>
           </div>
-          <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="registro-nombre" name="nombre" required />
+          <div class="input-formulario">
+            <input type="email" id="registrar-correo" name="correo" required />
+            <label for="registrar-correo">Correo:</label>
           </div>
-          <div>
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="registro-apellido" name="apellido" required />
+          <div class="input-formulario">
+            <input type="text" id="registrar-dni" name="dni" required />
+            <label for="registrar-dni">DNI:</label>
           </div>
-          <div>
-            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-            <input type="date" id="registro-fecha-nacimiento" name="fechaNacimiento" required />
+          <div class="input-formulario">
+            <input type="text" id="registrar-nombre" name="nombre" required />
+            <label for="registrar-nombre">Nombre:</label>
           </div>
-          <div>
-            <label for="nombreUsuario">Nombre de Usuario:</label>
-            <input type="text" id="registro-nombre-usuario" name="nombreUsuario" required />
+          <div class="input-formulario">
+            <input type="text" id="registrar-apellido" name="apellido" required />
+            <label for="registrar-apellido">Apellido:</label>
           </div>
-          <div>
-            <label for="clave">Clave:</label>
-            <input type="password" id="registro-clave" name="clave" required />
+          <div class="input-formulario">
+            <input class="input-formulario-fecha"   type="date" id="registrar-fecha-nacimiento" name="fechaNacimiento" required placeholder="PON UNA FECHA"/>
+            <label class="label-formularios-fecha" for="registrar-fecha-nacimiento">Fecha de Nacimiento:</label>
           </div>
-          <div>
-            <label for="confirmarClave">Confirmar Clave:</label>
-            <input type="password" id="registro-confirmar-clave" name="confirmarClave" required />
+          <div class="input-formulario">
+            <input type="text" id="registrar-nombre-usuario" name="nombreUsuario" required />
+            <label for="registrar-nombre-usuario">Nombre de Usuario:</label>
           </div>
-          <div>
-            <button type="submit">Registrar</button>
+          <div class="input-formulario">
+            <input type="password" id="registrar-clave" name="clave" required />
+            <label for="registrar-clave">Clave:</label>
+          </div>
+          <div class="input-formulario">
+            <input type="password" id="registrar-confirmar-clave" name="confirmarClave" required />
+            <label for="registrar-confirmar-clave">Confirmar Clave:</label>
+          </div>
+          <div class="formulario-boton-acciones">
+            <div class="formulario-terminos-condiciones">
+              <input type="checkbox" name="checkbox" id="registrar-formulario-checkbox">
+              <p>Estoy de acuerdo con los terminos y condiciones</p>
+              <a href="#" target="_blank" rel="noopener noreferrer">Terminos y condiciones</a>
+            </div>
+            <button class="botones-formularios " type="button" id="registrar-boton-cargar">Registrar</button>
+            <a href="#">Ya tengo una cuenta!</a>
           </div>
         </form>
       </div>
     </main>
-    <!-- <script src="../assets/js/dario.js"></script> -->
+    <footer>
+      <div class="footer-primer-contenedor">
+        <img src="https://i.ibb.co/hcxRSj9/Index-png.png" alt="Logo de la pagina"/>
+        <form id="form-subscribete">
+          <input
+            type="email"
+            id="footer-text-subscribir"
+            name="subcribete"
+            placeholder="Correo Electronico"
+            required
+          />
+          <button type="button"  id="footer-boton-suscriptor">Subcribirse</button>
+        </form>
+      </div>
+      <div class="footer-segundo-contenedor">
+        <h4>Contacto</h4>
+        <ul class="footer-contacto">
+          <li>WhatsApp: +543885273263</li>
+          <li>Correo:  bdidominguez@gmail.com</li>
+        </ul>
+        <h4>Redes Sociales</h4>
+        <ul class="footer-redes-sociales">
+          <li>linkedin</li>
+          <li>Youtube</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+    </footer>
+    
   </body>
 </html>

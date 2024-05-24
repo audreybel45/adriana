@@ -1,0 +1,112 @@
+.registrar-contenedor-furmulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 20 px 0;
+  
+  }
+  
+  .registro-formulario {
+      background-color: var(--color-naranja-oscuro);
+      padding: 10px;
+      margin-top: 20px ;
+      margin-bottom: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgb(0 , 0 , 0 , 1);
+      text-align: center;
+      width: 500px;
+  }
+  
+  
+  /* Estiolos de la imagen, el imput de files y del Label de la foto */
+  .registrar-foto-perfil{
+      display: flex;
+      flex-direction: column;
+      
+      
+  }
+  
+  .registrar-foto-perfil img{
+      border-radius: 10px;
+  }
+  
+  
+  .input-formulario-file{
+      display: none;
+  }
+  .input-formulario-file-label{
+      border-radius: 10px;
+      background-color: var(--color-azul-marino);
+      padding: 5px;
+      font-weight: bold;
+      font-size: 20px;
+  }
+  
+  /* Estilos del los diferenctes inputs de datos */
+  .input-formulario {
+    position: relative;
+    margin: 15px 0 0 0;
+  }
+  
+  .input-formulario input {
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    outline-color: 2px solid white;
+    background-color: transparent;
+    transition: outline-color 500ms;
+    width: 90%;
+  }
+  
+  .input-formulario input:is(:focus, :valid) {
+      /* outline-color: var(--color-naranja-oscuro); */
+      outline-color: var(--color-azul-marino);
+  }
+  
+  .input-formulario label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black;
+    transition: translate 500ms, scale 500ms;
+    translate: 10px 8px;
+    pointer-events: none;
+    
+  }
+  /* Formato para las etqiuetas que son del tipo fecha  */
+  .label-formularios-fecha{
+      background-color: var(--color-naranja-oscuro);
+  }
+  
+  /* Mover la etiqueta cuando el input tiene foco o valor */
+  .input-formulario input:focus + label,
+  .input-formulario input:valid + label {
+    padding-inline: 10px;
+    translate: 0px -14px;
+    scale: 0.8;
+    background-color: var(--color-naranja-oscuro);
+    font-size: 20px;
+    border-radius: 10px;
+  
+  }
+  
+  /* Estilos del acepto terminos y condiciones */
+  .formulario-terminos-condiciones{
+      display: flex;
+      align-items: center;
+  
+  }
+  .formulario-boton-acciones{
+      display: flex;
+      flex-direction: column;
+  }
+  .formulario-boton-acciones button{
+      margin-bottom: 10px;
+      
+  }
+  
+  
+  
+  
+   

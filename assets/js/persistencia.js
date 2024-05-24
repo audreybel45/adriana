@@ -43,8 +43,8 @@ import { Usuario } from "./objetos.js";
 
 /**
  * Funcion que regresa un objeto con los registros que contengan un ID igual al pasado si por casualidad se crearn mas de 1 regresara todos pero solo mostrara el primero
- * @param {*} id 
- * @returns 
+ * @param {*} id  id del usuario
+ * @returns   regresa con el usuario
  */
 export async function consultarUsuario(id){
   let resp = new Usuario;
@@ -56,6 +56,45 @@ export async function consultarUsuario(id){
       data.forEach(item => {
         const usuario = new Usuario(
           item.id,
+          item.dni,
+          item.correo,
+          item.nombre,
+          item.apellido,
+          item.fechaNacimiento,
+          item.usuario,
+          item.clave,
+          item.foto,
+          item.fotoMiniatura
+        )
+        resp = (usuario)
+      })
+      return resp
+    }else{
+      return []
+    }
+  }else{
+    // Si la respuesta del servidor no fue exitosa, lanzar un error o manejarlo según sea necesario
+    throw new Error("Error al obtener los datos de los usuarios")
+  }
+}
+
+/**
+ * Funcion que regresa un objeto con los registros que contengan un ID igual al pasado si por casualidad se crearn mas de 1 regresara todos pero solo mostrara el primero
+ * @param {*} dni  dni del usuario
+ * @returns   regresa con el usuario
+ */
+export async function consultarUsuarioDNI(dni){
+  let resp = new Usuario;
+  const url = `https://sheetdb.io/api/v1/tv96lgxabh427/search?dni=${dni}&sheet=usuarios` 
+  const respuesta = await fetch(url)
+  if (respuesta.ok) {
+    const data = await respuesta.json()
+    if (data && data.length > 0) {
+      data.forEach(item => {
+        const usuario = new Usuario(
+          item.id,
+          item.dni,
+          item.correo,
           item.nombre,
           item.apellido,
           item.fechaNacimiento,
@@ -122,19 +161,22 @@ export async function listarUsaurios() {
  *
  * para ser almacenada en el servidor SheetDB
  */
-export async function crearUsuario(usuario) {
+export async function subirUsuario(usuario) {
   const url = "https://sheetdb.io/api/v1/tv96lgxabh427?sheet=usuarios";
-  // Cremos un objeto con los datos del usuario
+  // Creemos un objeto con los datos del usuario
   const datosUsuario = {
     data: {
       id: "INCREMENT",
+      dni: usuario.dni,
+      correo: usuario.correo,
       nombre: usuario.nombre,
       apellido: usuario.apellido,
       fechaNacimiento: usuario.fechaNacimiento,
       usuario: usuario.usuario,
       clave: usuario.clave,
       foto: usuario.foto,
-      fotoMiniatura: usuario.fotoMiniatura,
+      fotoMiniatura: usuario.fotoMiniatura
+      
     },
   };
   // configuramos la solicitud POST
@@ -143,20 +185,20 @@ export async function crearUsuario(usuario) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(datosUsuario),
   };
+
   // Enviamos la solicitud POST
-  fetch(url, opciones)
-    .then(async (response) => {
-      if (!response.ok) {
-        throw new Error("Error al guardar el usuario");
-      }
-      return await response.json();
-    })
-    .then((data) => {
-      console.log("Usuario Guardado Existosamente: ", data);
-    })
-    .catch((error) => {
-      console.error("Error ", error);
-    });
+  try {
+    const response = await fetch(url, opciones);
+    if (!response.ok) {
+      throw new Error("Error al guardar el usuario");
+    }
+    const data = await response.json();
+    //console.log("Usuario Guardado Existosamente: ", data);
+    return true;
+  } catch (error) {
+    console.error("Error ", error);
+    return false;
+  }
 }
 
 /********************************************************************/
@@ -250,10 +292,10 @@ export async function subirImagen(archivo) {
       body: data,
     });
     const datosregresados = await respuesta.json();
-    //console.log("Datos de Respuesta " + datosregresados);
-    //console.log("URL " + datosregresados.data.url);
-    //console.log("Miniatura " + datosregresados.data.thumb.url);
-    //console.log("Estado " + datosregresados.success);
+    // console.log("Datos de Respuesta " + datosregresados);
+    // console.log("URL " + datosregresados.data.url);
+    // console.log("Miniatura " + datosregresados.data.thumb.url);
+    // console.log("Estado " + datosregresados.success);
     return [datosregresados.data.url, datosregresados.data.thumb.url, datosregresados.success];
   } catch (error) {
     console.error(error);
@@ -312,3 +354,34 @@ export async function consultarSuscriptor(correo) {
     return false
   }
 }
+
+
+  /**
+   * Agrega en el Button una animacion de cargar
+   * 
+   * @param {string} nombreElemento id del elemento button que tendra la animacion
+   * @param {boolean} accion - Indica si debe acticar (true) o desactivar (false) la animacion.
+   */
+  export function animacionBotonCarga(nombreElemento,accion){
+    const elemento = document.getElementById(nombreElemento)
+    if (accion){
+      elemento.classList.add("loading-button")
+    }else{
+      elemento.classList.remove("loading-button")
+    }
+  }
+
+  /**
+ * Cambia el cursor a 'wait' cuando se activa la animación de carga en un elemento.
+ * 
+ * @param {string} nombreElemento - El ID del elemento cuyo cursor cambiará.
+ * @param {boolean} accion - Indica si se debe activar (true) o desactivar (false) la animación.
+ */
+  export function animacionCursoCarga(nombreElemento,accion){
+    const elemento = document.getElementById(nombreElemento)
+    if (accion){
+      elemento.classList.add("loading-cursor")
+    }else{
+      elemento.classList.remove("loading-cursor")
+    }
+  }

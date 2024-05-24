@@ -3,7 +3,8 @@
 @import "../../styles/components/header.css";
 @import "../../styles/components/footer.css";
 @import "../../styles/components/index.css";
-@import "../../assets/css/turismo_styles.css";
+@import "./registrar.css";
+@import "./turismo_styles.css";
 
 body,
 html {
