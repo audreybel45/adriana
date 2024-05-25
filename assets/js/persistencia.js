@@ -385,3 +385,33 @@ export async function consultarSuscriptor(correo) {
       elemento.classList.remove("loading-cursor")
     }
   }
+
+    /**
+   * Funcion que muestra un mensaje en la parte inferior de la pantalla
+   * 
+   * @param {string} msg  Cuerpo del mensaje que queremos dar
+   * @param {string} tit  Titulo que llevara el mensaje
+   * @param {number} tiempo tiempo en segundos que tardara en desaparecer el mensaje
+   */
+    export function miMensaje(msg, tit, tiempo) {
+      // Creamos los elementos
+      const contenedor = document.createElement("div");
+      contenedor.classList.add("contenedor-miMensage");
+      const titulo = document.createElement("h3");
+      titulo.textContent = tit;
+      const mensaje = document.createElement("p");
+      mensaje.textContent = msg;
+      
+      // Insertamos los elementos al contenedor
+      contenedor.appendChild(titulo);
+      contenedor.appendChild(mensaje);
+      
+      // Seleccionamos el destino de la página (será el body) y agregamos el mensaje
+      const hoja = document.querySelector("body");
+      hoja.appendChild(contenedor);
+      
+      // Eliminamos el mensaje después de `tiempo` segundos
+      setTimeout(() => {
+          hoja.removeChild(contenedor);
+      }, tiempo * 1000);
+    }

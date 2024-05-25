@@ -3,7 +3,10 @@ import {
   subirSuscriptor,
   consultarSuscriptor,
   consultarUsuarioDNI,
-  subirUsuario, animacionBotonCarga, animacionCursoCarga
+  subirUsuario,
+  animacionBotonCarga,
+  animacionCursoCarga,
+  miMensaje
 } from "./persistencia.js";
 import { Usuario } from "./objetos.js";
 
@@ -12,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // si la foto no carga o no se eligue foto se usa la predeterminada
   document.getElementById("registrar-foto-perfil").addEventListener("change", (e) => {
     const elementoImagen = document.getElementById("registrar-foto-actual");
-    miMensaje("paraaaaaa ansioooosooo  ya estas suscripto!!! -- Gracias por elegirnos", "Ese DNI ya Existe",3);
     if (e.target.files[0]) {
       // si existe algun archivo regresa true
       const lector = new FileReader();
@@ -69,16 +71,16 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         const vResp = await subirUsuario(usuario);
         if (vResp) {
-          alert("Se cargo con exito el usuario");
+          miMensaje("Se cargo con exito el usuario de forma satifactorio","Carga Exitosa",3);
           animacionBotonCarga("registrar-boton-cargar",false)
           animacionCursoCarga("formulario-de-registro",false)
         } else {
-          alert("Hubo un error al cargar el usuario");
+          miMensaje("Ocurrio algun problema no se pudo cargar","Falla de Carga",3);
           animacionBotonCarga("registrar-boton-cargar",false)
           animacionCursoCarga("formulario-de-registro",false)
         }
       } else {
-        alert("Ese Usuario ya existe");
+        miMensaje("El Usuario ya existe","Informacion",3);
         animacionBotonCarga("registrar-boton-cargar",false)
         animacionCursoCarga("formulario-de-registro",false)
       }
@@ -114,40 +116,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // CARGAMOS EL CORREO AL ENDPOINT
         let respuesta = subirSuscriptor(correo);
         if (respuesta) {
-          alert("Gracias por suscribirte!!");
+          miMensaje("Gracias por suscribirte","Informacio",3);
           document.getElementById("footer-text-subscribir").value = "";
         }
       }
     } else {
-      alert("Correo no Valido");
+      miMensaje("Ese correo ya fue cargado.","Advertencia",3);
       document.getElementById("footer-text-subscribir").select();
     }
   }
 
-  function miMensaje(msg, tit, tiempo) {
-    // Creamos los elementos
-    const contenedor = document.createElement("div");
-    contenedor.classList.add("contenedor-miMensage");
-    const titulo = document.createElement("h3");
-    titulo.textContent = tit;
-    const mensaje = document.createElement("p");
-    mensaje.textContent = msg;
-    
-    // Insertamos los elementos al contenedor
-    contenedor.appendChild(titulo);
-    contenedor.appendChild(mensaje);
-    
-    // Seleccionamos el destino de la página (será el body) y agregamos el mensaje
-    const hoja = document.querySelector("body");
-    hoja.appendChild(contenedor);
-    
-    // Eliminamos el mensaje después de `tiempo` segundos
-    setTimeout(() => {
-        hoja.removeChild(contenedor);
-    }, tiempo * 1000);
-}
-
-
-
+  
 
 }); // FIN DEL DOMContentLoaded
