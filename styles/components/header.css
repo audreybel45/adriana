@@ -4,8 +4,6 @@
   --header-heigth: 70px;
 }
 
-
-
 @media only screen and (min-width: 992px) {
   .header-icono-hamburguesa {
     display: none;
